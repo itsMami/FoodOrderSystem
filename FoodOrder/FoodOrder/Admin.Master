@@ -15,9 +15,12 @@
         .auto-style2 {
             width: 160px;
         }
+        .auto-style3 {
+            width: 321px;
+        }
     </style>
 </head>
-<body style="height: 518px">
+<body style="height: 518px; width: 901px;">
     <form id="form1" runat="server">
     <div>
         <table class="auto-style1">
@@ -28,25 +31,20 @@
                     <br />
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                     </asp:ContentPlaceHolder>
+                  
                     <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+                  
                     <a href="Home.aspx">LogOut</a></td>
-                <td style="background-color: #FFFF99">
+                <td style="background-color: #FFFF99" class="auto-style3">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
+                </td>
+                <td style="background-color: #FFFF99">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </asp:ContentPlaceHolder>
                 </td>
             </tr>
         </table>

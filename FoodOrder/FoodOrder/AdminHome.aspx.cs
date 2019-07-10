@@ -11,7 +11,7 @@ namespace FoodOrder
 {//gridview css generator
     public partial class AdminHome : System.Web.UI.Page
     {
-        static string connectionString = "Data Source=EXPER10;Initial Catalog=FoodOrder;Integrated Security=True";
+        static string connectionString = "Data Source=EXPER10;Initial Catalog=FoodOrder;Integrated Security=True;MultipleActiveResultSets=True";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,6 +19,22 @@ namespace FoodOrder
             {
                 usernameLabel.Text = Page.Request.QueryString["text"];
             }
+            if (!IsPostBack)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC ListAllCities", connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    CityList.DataSource = reader;
+                    CityList.DataTextField = "Name";
+                    CityList.DataValueField = "ID";
+                    CityList.DataBind();
+                }
+            }
+           
+
+
         }
 
         protected void ListAdminButton_Click(object sender, EventArgs e)
@@ -30,7 +46,7 @@ namespace FoodOrder
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 ListBox1.DataSource = reader;
-                ListBox1.DataTextField = "UserName";
+                ListBox1.DataTextField = "Username";
                 ListBox1.DataValueField = "ID";
                 ListBox1.DataBind();
             }
@@ -84,7 +100,7 @@ namespace FoodOrder
         protected void DeleteButton_Click(object sender, EventArgs e)
         {
             if (ListBox1.SelectedIndex != -1 && usernameLabel.Text != ListBox1.SelectedItem.Text)
-            {//You cant delete yourself!
+            {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand command = new SqlCommand("EXEC DeleteUser " + ListBox1.SelectedValue, connection);
@@ -94,5 +110,134 @@ namespace FoodOrder
                 ListBox1.Items.Remove(ListBox1.SelectedItem);
             }
         }
+
+        protected void AddCityButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CityTextBox.Text))
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC InsertCity " + CityTextBox.Text, connection);
+                    connection.Open();
+                    command.ExecuteReader();
+                    CityList.Items.Clear();
+                    SqlCommand command2 = new SqlCommand("EXEC ListAllCities", connection);
+                    SqlDataReader reader = command2.ExecuteReader();
+                    CityList.DataSource = reader;
+                    CityList.DataTextField = "Name";
+                    CityList.DataValueField = "ID";
+                    CityList.DataBind();
+
+                }
+                
+            }
+        }
+
+        protected void DeleteCityButton_Click(object sender, EventArgs e)
+        {
+            if (CityList.SelectedIndex != -1)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC DeleteCity " + CityList.SelectedItem.Value, connection);
+                    connection.Open();
+                    command.ExecuteReader();
+                    CityList.Items.Clear();
+                    SqlCommand command2 = new SqlCommand("EXEC ListAllCities", connection);
+                    SqlDataReader reader = command2.ExecuteReader();
+                    CityList.DataSource = reader;
+                    CityList.DataTextField = "Name";
+                    CityList.DataValueField = "ID";
+                    CityList.DataBind();
+                }
+            }
+        }
+
+        protected void CityList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                DistrictList.Items.Clear();
+                SqlCommand command = new SqlCommand("EXEC ListAllDistrictsWithCity " + CityList.SelectedItem.Value, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                DistrictList.DataSource = reader;
+                DistrictList.DataTextField = "Name";
+                DistrictList.DataValueField = "ID";
+                DistrictList.DataBind();
+            }
+        }
+        protected void AddDistrictButton_Click(object sender, EventArgs e)
+        {
+
+            if (!string.IsNullOrWhiteSpace(DistrictTextBox.Text) && CityList.SelectedIndex != -1)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC InsertDistrict " + DistrictTextBox.Text + "," + CityList.SelectedItem.Value, connection);
+                    connection.Open();
+                    command.ExecuteReader();
+                    DistrictList.Items.Clear();
+                    SqlCommand command2 = new SqlCommand("EXEC ListAllDistrictsWithCity " + CityList.SelectedItem.Value, connection);
+                    SqlDataReader reader = command2.ExecuteReader();
+                    DistrictList.DataSource = reader;
+                    DistrictList.DataTextField = "Name";
+                    DistrictList.DataValueField = "ID";
+                    DistrictList.DataBind();
+                }
+
+            }
+        }
+        protected void DeleteDistrictButton_Click(object sender, EventArgs e)
+        {
+            if (CityList.SelectedIndex != -1)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC DeleteDistrict " + DistrictList.SelectedItem.Value, connection);
+                    connection.Open();
+                    command.ExecuteReader();
+                    DistrictList.Items.Clear();
+                    SqlCommand command2 = new SqlCommand("EXEC ListAllDistrictsWithCity " + CityList.SelectedItem.Value, connection);
+                    SqlDataReader reader = command2.ExecuteReader();
+                    DistrictList.DataSource = reader;
+                    DistrictList.DataTextField = "Name";
+                    DistrictList.DataValueField = "ID";
+                    DistrictList.DataBind();
+                }
+            }
+        }
+
+        protected void MakeAdminButton_Click(object sender, EventArgs e)
+        {
+            if (ListBox1.SelectedIndex != -1)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC MakeAdmin " + ListBox1.SelectedItem.Value + ", 1", connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                }
+
+            }
+        }
+
+        protected void RemoveAdminButton_Click(object sender, EventArgs e)
+        {
+            if (ListBox1.SelectedIndex != -1)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC MakeAdmin " + ListBox1.SelectedItem.Value + ", 0", connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                }
+
+            }
+        }
+
+     
+
+        
     }
 }

@@ -20,10 +20,17 @@
         }
         .auto-style3 {
             width: 165px;
-            height: 632px;
+            height: 645px;
         }
         .auto-style4 {
-            height: 63px;
+            height: 645px;
+        }
+        .auto-style5 {
+            height: 645px;
+            width: 292px;
+        }
+        .auto-style6 {
+            width: 292px;
         }
     </style>
 </head>
@@ -38,15 +45,21 @@
                     <br />
                     <a href="Home.aspx">Home</a><br />
                     </td>
-                <td class="auto-style4">
+                <td class="auto-style5">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
           
         </asp:ContentPlaceHolder>
                 </td>
+                <td class="auto-style4">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style2" style="background-color: #444444; text-align: center; vertical-align: top;">&nbsp;</td>
+                <td class="auto-style6">
+                    </td>
                 <td>
                     &nbsp;</td>
             </tr>
