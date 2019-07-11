@@ -15,9 +15,9 @@ namespace FoodOrder
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.Request.QueryString["text"] != null)
+            if (Page.Request.QueryString["username"] != null)
             {
-                usernameLabel.Text = Page.Request.QueryString["text"];
+                usernameLabel.Text = Page.Request.QueryString["username"];
             }
             if (!IsPostBack)
             {

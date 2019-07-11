@@ -29,12 +29,12 @@
     <asp:MultiView ID="MultiView1" runat="server">
         <asp:View ID="AdminView" runat="server">
             <asp:Label ID="Label1" runat="server" Text="Username: " ForeColor="#00FF99"></asp:Label>
-            <asp:TextBox ID="AdminLoginTextBox" runat="server" CssClass="aayhan1" Height="39px" Width="134px"></asp:TextBox>
+            <asp:TextBox ID="AdminLoginTextBox" runat="server" CssClass="aayhan1" Height="39px" Width="134px" ValidationGroup="3"></asp:TextBox>
             <br />
             <asp:Label ID="Label2" runat="server" Text="Password: " ForeColor="#00FF99"></asp:Label>
-&nbsp;<asp:TextBox ID="AdminPasswordTextBox" runat="server" CssClass="aayhan1" Height="39px" TextMode="Password" Width="135px"></asp:TextBox>
+&nbsp;<asp:TextBox ID="AdminPasswordTextBox" runat="server" CssClass="aayhan1" Height="39px" TextMode="Password" Width="135px" ValidationGroup="3"></asp:TextBox>
             <br />
-            <asp:Button ID="AdminLoginButton" runat="server" CssClass="aayhan2" OnClick="AdminLoginButton_Click" Text="Login" />
+            <asp:Button ID="AdminLoginButton" runat="server" CssClass="aayhan2" OnClick="AdminLoginButton_Click" Text="Login" ValidationGroup="3" />
             &nbsp;&nbsp;
             <asp:Button ID="AdminSignUpButton" runat="server" CssClass="aayhan2" OnClick="AdminSignUpButton_Click" Text="Sign Up" />
             <br />
@@ -42,12 +42,12 @@
         </asp:View>
         <asp:View ID="CompanyView" runat="server">
             <asp:Label ID="Label4" runat="server" Text="Username: " ForeColor="#FF6666"></asp:Label>
-            <asp:TextBox ID="CompanyLoginTextBox" runat="server" CssClass="aayhan1" Height="39px" Width="134px"></asp:TextBox>
+            <asp:TextBox ID="CompanyLoginTextBox" runat="server" CssClass="aayhan1" Height="39px" Width="134px" ValidationGroup="4"></asp:TextBox>
             <br />
             <asp:Label ID="Label5" runat="server" Text="Password: " ForeColor="#FF6666"></asp:Label>
-            &nbsp;<asp:TextBox ID="CompanyPasswordTextBox" runat="server" CssClass="aayhan1" Height="39px" TextMode="Password" Width="135px"></asp:TextBox>
+            &nbsp;<asp:TextBox ID="CompanyPasswordTextBox" runat="server" CssClass="aayhan1" Height="39px" TextMode="Password" Width="135px" ValidationGroup="4"></asp:TextBox>
             <br />
-            <asp:Button ID="CompanyLoginButton" runat="server" CssClass="aayhan2" OnClick="CompanyLoginButton_Click" Text="Login" />
+            <asp:Button ID="CompanyLoginButton" runat="server" CssClass="aayhan2" OnClick="CompanyLoginButton_Click" Text="Login" ValidationGroup="4" />
             &nbsp;&nbsp;
             <asp:Button ID="CompanySignUpButton" runat="server" CssClass="aayhan2" OnClick="CompanySignUpButton_Click" Text="Sign Up" />
             <br />
@@ -56,12 +56,12 @@
         </asp:View>
         <asp:View ID="UserView" runat="server">
             <asp:Label ID="Label7" runat="server" Text="Username: "></asp:Label>
-            <asp:TextBox ID="UserLoginTextBox" runat="server" CssClass="aayhan1" Height="39px" Width="134px"></asp:TextBox>
+            <asp:TextBox ID="UserLoginTextBox" runat="server" CssClass="aayhan1" Height="39px" Width="134px" ValidationGroup="5"></asp:TextBox>
             <br />
             <asp:Label ID="Label8" runat="server" Text="Password: "></asp:Label>
-            &nbsp;<asp:TextBox ID="UserPasswordTextBox" runat="server" CssClass="aayhan1" Height="39px" TextMode="Password" Width="135px"></asp:TextBox>
+            &nbsp;<asp:TextBox ID="UserPasswordTextBox" runat="server" CssClass="aayhan1" Height="39px" TextMode="Password" Width="135px" ValidationGroup="5"></asp:TextBox>
             <br />
-            <asp:Button ID="UserLoginButton" runat="server" BackColor="#CCFFFF" CssClass="aayhan2" OnClick="UserLoginButton_Click" Text="Login" />
+            <asp:Button ID="UserLoginButton" runat="server" BackColor="#CCFFFF" CssClass="aayhan2" OnClick="UserLoginButton_Click" Text="Login" ValidationGroup="5" />
             &nbsp;&nbsp;
             <asp:Button ID="UserSignUpButton" runat="server" BackColor="#CCFFFF" CssClass="aayhan2" OnClick="UserSignUpButton_Click" Text="Sign Up" />
             <br />
@@ -282,8 +282,6 @@
             <br />
             <br />
             <br />
-        </asp:View>
-        <asp:View ID="companymenupage" runat="server">
         </asp:View>
         <asp:View ID="UserSignUp" runat="server">
         </asp:View>

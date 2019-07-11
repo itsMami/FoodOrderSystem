@@ -9,7 +9,6 @@ using System.Configuration;
 
 
 //User signup webform
-//Company menu signup form
 //clear fields buggy
 
 namespace FoodOrder.FoodOrder
@@ -40,7 +39,7 @@ namespace FoodOrder.FoodOrder
                         switch (command2.ExecuteScalar().ToString())
                         {
                             case "True":
-                                Page.Response.Redirect("AdminHome.aspx?text=" + AdminLoginTextBox.Text);
+                                Page.Response.Redirect("AdminHome.aspx?username=" + AdminLoginTextBox.Text);
                                 break;
                             case "False":
                                 Label3.Visible=true;
@@ -100,7 +99,30 @@ namespace FoodOrder.FoodOrder
         }
         protected void CompanyLoginButton_Click(object sender, EventArgs e)
         {
-            
+            Label6.Visible = false;
+            if (CompanyLoginTextBox.Text != "" && CompanyPasswordTextBox.Text != "")
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC checkLogin '" + CompanyLoginTextBox.Text +
+                        "'," + CompanyPasswordTextBox.Text, connection);
+                    connection.Open();
+                    if (command.ExecuteScalar() != null)
+                    {
+                        Page.Response.Redirect("CompanyPanel.aspx?username=" + CompanyLoginTextBox.Text);
+                    }
+                    else
+                    {
+                        Label6.Visible = true;
+                        Label6.Text = "You Entered a Wrong Username or Password!";
+                    }
+                }
+            }
+            else
+            {
+                Label6.Visible = true;
+                Label6.Text = "Fill the required areas";
+            }
         }
         protected void CompanySignUpButton_Click(object sender, EventArgs e)
         {

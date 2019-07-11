@@ -296,5 +296,61 @@ CREATE TABLE CompanyFoods
 	FoodType VARCHAR(30) NOT NULL,
 	CompanyID INT FOREIGN KEY REFERENCES Companies(ID) ON DELETE CASCADE NOT NULL
 )
+CREATE PROCEDURE GetCompanyFoods @ID INT, @Type VARCHAR(30)
+AS BEGIN
+SELECT ID,FoodName,FoodPrice,FoodType FROM CompanyFoods
+WHERE CompanyID=@ID AND FoodType = @Type ORDER BY FoodType
+END
+EXEC GetCompanyFoods 6,Dessert
 
-SELECT FoodName FROM CompanyFoods WHERE CompanyID=@ID AND FoodType = @Type
+CREATE PROCEDURE GetFoodPrice @ID INT
+AS BEGIN
+SELECT FoodPrice FROM CompanyFoods WHERE ID = @ID
+END
+
+CREATE PROCEDURE UpdateFoodName @ID INT,@Name VARCHAR(30)
+AS BEGIN
+UPDATE CompanyFoods SET FoodName = @Name WHERE ID = @ID
+END
+
+CREATE PROCEDURE UpdateFoodType @ID INT,@Type VARCHAR(30)
+AS BEGIN
+UPDATE CompanyFoods SET FoodType = @Type WHERE ID = @ID
+END
+
+CREATE PROCEDURE UpdateFood @ID INT,@Name VARCHAR(30),@Price INT,@Type VARCHAR(30)
+AS BEGIN
+UPDATE CompanyFoods SET FoodName = @Name,FoodPrice = @Price,FoodType = @Type WHERE ID = @ID
+END
+
+CREATE PROCEDURE GetCompanyIDFromUserName @Name VARCHAR(30)
+AS BEGIN
+SELECT Companies.ID FROM Companies 
+JOIN Users ON Users.ID = Companies.UserID WHERE Companies.CompanyName = 'q'
+END
+EXEC GetCompanyIDFromUserName 'q'
+INSERT INTO CompanyFoods(FoodName,FoodPrice,FoodType,CompanyID) VALUES ('test',10,'dessert',6)
+
+EXEC GetCompanyIDFromUserName 'Little Ceaser'
+
+EXEC showIDbyUsername 'a'
+CREATE PROCEDURE InsertCompanyFood @Name VARCHAR(30),@Price INT,@Type VARCHAR(30),@ID INT
+AS BEGIN
+INSERT INTO CompanyFoods(FoodName,FoodPrice,FoodType,CompanyID)
+VALUES (@Name,@Price,@Type,@ID)
+END
+
+EXEC InsertCompanyFood 'at eti',30,'main food',6
+
+CREATE PROCEDURE UpdateFoodPrice @ID INT,@NewPrice INT
+AS BEGIN
+UPDATE CompanyFoods SET FoodPrice = @NewPrice WHERE ID = @ID
+END
+EXEC UpdateFoodPrice 2,56
+
+CREATE PROCEDURE DeleteFood @ID INT
+AS BEGIN
+DELETE FROM CompanyFoods WHERE ID=@ID
+END
+
+EXEC DeleteFood 2

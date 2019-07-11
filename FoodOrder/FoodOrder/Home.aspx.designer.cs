@@ -877,15 +877,6 @@ namespace FoodOrder.FoodOrder {
         protected global::System.Web.UI.WebControls.Button companymenubutton;
         
         /// <summary>
-        /// companymenupage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View companymenupage;
-        
-        /// <summary>
         /// UserSignUp control.
         /// </summary>
         /// <remarks>

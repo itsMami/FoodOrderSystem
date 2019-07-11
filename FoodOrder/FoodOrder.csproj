@@ -194,6 +194,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="FoodOrder\CompanyPanel.aspx" />
     <Content Include="FoodOrder\Home.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
@@ -327,6 +328,13 @@
     </Compile>
     <Compile Include="FoodOrder\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="FoodOrder\CompanyPanel.aspx.cs">
+      <DependentUpon>CompanyPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FoodOrder\CompanyPanel.aspx.designer.cs">
+      <DependentUpon>CompanyPanel.aspx</DependentUpon>
     </Compile>
     <Compile Include="FoodOrder\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
