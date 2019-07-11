@@ -42,8 +42,8 @@
                     <br />
                     <br />
                     <br />
+                    <asp:Button ID="Button1" runat="server" BackColor="#444444" BorderColor="#3E3E3E" BorderStyle="Dotted" BorderWidth="1px" CssClass="aatestbutton" Height="60px" OnClick="Button1_Click" Text="Home" Width="158px" />
                     <br />
-                    <a href="Home.aspx">Home</a><br />
                     </td>
                 <td class="auto-style5">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
