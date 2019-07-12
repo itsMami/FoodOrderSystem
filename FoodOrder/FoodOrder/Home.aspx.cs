@@ -19,7 +19,11 @@ namespace FoodOrder.FoodOrder
         static string password;
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            if (password != null)
+            {
+                companysignuppassword1.Attributes.Add("value", password);
+                companysignuppassword2.Attributes.Add("value", password);
+            }
         }
 
         protected void AdminLoginButton_Click(object sender, EventArgs e)
@@ -30,7 +34,7 @@ namespace FoodOrder.FoodOrder
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand command = new SqlCommand("EXEC checkLogin '" + AdminLoginTextBox.Text +
-                        "'," + AdminPasswordTextBox.Text, connection);
+                        "'," + AdminPasswordTextBox.Text + "," + 1, connection);
                     connection.Open();
                     if (command.ExecuteScalar() != null)
                     {
@@ -43,7 +47,7 @@ namespace FoodOrder.FoodOrder
                                 break;
                             case "False":
                                 Label3.Visible=true;
-                                Label3.Text = "You need to be approved first to login!Please wait for the confirmation.";
+                                Label3.Text = "You need to be approved first to login! Please wait for the confirmation.";
                                 break;
                             default:
                                 break;
@@ -105,7 +109,7 @@ namespace FoodOrder.FoodOrder
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand command = new SqlCommand("EXEC checkLogin '" + CompanyLoginTextBox.Text +
-                        "'," + CompanyPasswordTextBox.Text, connection);
+                        "'," + CompanyPasswordTextBox.Text + "," + 2, connection);
                     connection.Open();
                     if (command.ExecuteScalar() != null)
                     {
@@ -199,6 +203,8 @@ namespace FoodOrder.FoodOrder
                 signupdistrictlist.DataValueField = "ID";
                 signupdistrictlist.DataBind();
             }
+            companysignuppassword1.Attributes.Add("value", password);
+            companysignuppassword2.Attributes.Add("value", password);
         }
 
         protected void companyNextPage_Click(object sender, EventArgs e)
@@ -260,11 +266,19 @@ namespace FoodOrder.FoodOrder
                 CompanyDistrictList.DataValueField = "ID";
                 CompanyDistrictList.DataBind();
             }
+            companysignuppassword1.Attributes.Add("value", password);
+            companysignuppassword2.Attributes.Add("value", password);
         }
 
         protected void prevpage_Click(object sender, EventArgs e)
         {
             MultiView2.SetActiveView(CompanySignUp);
+            companysignuppassword1.Attributes.Add("value", password);
+            companysignuppassword2.Attributes.Add("value", password);
+        }
+
+        protected void CompanyDistrictList_SelectedIndexChanged(object sender, EventArgs e)
+        {
             companysignuppassword1.Attributes.Add("value", password);
             companysignuppassword2.Attributes.Add("value", password);
         }

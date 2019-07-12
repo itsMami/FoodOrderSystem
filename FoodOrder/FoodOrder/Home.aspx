@@ -167,7 +167,7 @@
             <asp:DropDownList ID="companyCityList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="companyCityList_SelectedIndexChanged">
                 <asp:ListItem Value="-1">Select a City</asp:ListItem>
             </asp:DropDownList>
-            <asp:DropDownList ID="CompanyDistrictList" runat="server" AutoPostBack="True">
+            <asp:DropDownList ID="CompanyDistrictList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="CompanyDistrictList_SelectedIndexChanged">
                 <asp:ListItem Value="-1">Select a District</asp:ListItem>
             </asp:DropDownList>
             <br />
@@ -267,18 +267,18 @@
             <br />
             <asp:Label ID="Label30" runat="server" Text="Company Minimum Order Price: "></asp:Label>
             <asp:DropDownList ID="companyminprice" runat="server" Height="27px">
-                <asp:ListItem>10</asp:ListItem>
                 <asp:ListItem>0</asp:ListItem>
-                <asp:ListItem>30</asp:ListItem>
+                <asp:ListItem>10</asp:ListItem>
                 <asp:ListItem>20</asp:ListItem>
-                <asp:ListItem>50</asp:ListItem>
+                <asp:ListItem>30</asp:ListItem>
                 <asp:ListItem>40</asp:ListItem>
+                <asp:ListItem>50</asp:ListItem>
             </asp:DropDownList>
             <asp:Label ID="Label31" runat="server" Text="TL"></asp:Label>
             <br />
             <br />
             <asp:Button ID="prevpage" runat="server" OnClick="prevpage_Click" Text="Previous Page" />
-            <asp:Button ID="companymenubutton" runat="server" OnClick="companymenubutton_Click" Text="Create Your Menu" Width="219px" />
+            <asp:Button ID="companymenubutton" runat="server" OnClick="companymenubutton_Click" Text="Sign Up!" Width="219px" />
             <br />
             <br />
             <br />

@@ -22,7 +22,9 @@ namespace FoodOrder.FoodOrder
             }
             if (!IsPostBack)
             {
+                GetCategories();
                 GetMenu();
+               
             }
         }
 
@@ -43,23 +45,42 @@ namespace FoodOrder.FoodOrder
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (ListBox1.SelectedItem != null && !string.IsNullOrWhiteSpace(TextBox2.Text))
             {
-                SqlCommand command = new SqlCommand("EXEC UpdateFoodName " + ListBox1.SelectedItem.Value + ",'" + TextBox2.Text + "'", connection);
-                connection.Open();
-                command.ExecuteReader();
+                Label7.Visible = false;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC UpdateFoodName " + ListBox1.SelectedItem.Value + ",'" + TextBox2.Text + "'", connection);
+                    connection.Open();
+                    command.ExecuteReader();
+                }
+                GetMenu();
+
             }
-            GetMenu();
+            else
+            {
+                Label7.Text = "Please Select an Item to Update it's name!";
+                Label7.Visible = true;
+            }
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (ListBox1.SelectedItem != null)
             {
-                SqlCommand command = new SqlCommand("EXEC DeleteFood " + ListBox1.SelectedItem.Value, connection);
-                connection.Open();
-                command.ExecuteReader();
-                GetMenu();
+                Label7.Visible = false;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC DeleteFood " + ListBox1.SelectedItem.Value, connection);
+                    connection.Open();
+                    command.ExecuteReader();
+                    GetMenu();
+                }
+            }
+            else
+            {
+                Label7.Text = "Please Select an Item to Delete!";
+                Label7.Visible = true;
             }
         }
 
@@ -107,26 +128,68 @@ namespace FoodOrder.FoodOrder
 
         protected void Button6_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (ListBox1.SelectedItem != null && !string.IsNullOrWhiteSpace(TextBox1.Text))
             {
-                SqlCommand command = new SqlCommand("EXEC UpdateFoodPrice " + ListBox1.SelectedItem.Value + "," + Convert.ToInt32(TextBox1.Text), connection);
-                connection.Open();
-                command.ExecuteReader();
+                Label7.Visible = false;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC UpdateFoodPrice " + ListBox1.SelectedItem.Value + "," + Convert.ToInt32(TextBox1.Text), connection);
+                    connection.Open();
+                    command.ExecuteReader();
+                }
+                GetMenu();
             }
-            GetMenu();
+            else
+            {
+                Label7.Text = "Please Select an Item to Update it's Price!";
+                Label7.Visible = true;
+            }
         }
 
         protected void Button5_Click(object sender, EventArgs e)
         {
+            if (ListBox1.SelectedItem != null && DropDownList2.SelectedItem != null)
+            {
+                Label7.Visible = false;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC UpdateFoodType " + ListBox1.SelectedItem.Value + ",'" + DropDownList2.SelectedItem.Text + "'", connection);
+                    connection.Open();
+                    command.ExecuteReader();
+                }
+                GetMenu();
+            }
+            else
+            {
+                Label7.Text = "Please Select an Item to Update it's Type!";
+                Label7.Visible = true;
+            }
+        }
+        private void GetCategories()
+        {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("EXEC UpdateFoodType " + ListBox1.SelectedItem.Value + ",'" + DropDownList2.SelectedItem.Text + "'", connection);
+                SqlCommand command = new SqlCommand("EXEC GetCategories", connection);
                 connection.Open();
-                command.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
+                DropDownList1.DataSource = reader;
+                DropDownList1.DataValueField = "ID";
+                DropDownList1.DataTextField = "Name";
+                DropDownList1.DataBind();
             }
-            GetMenu();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetCategories", connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                DropDownList2.DataSource = reader;
+                DropDownList2.DataValueField = "ID";
+                DropDownList2.DataTextField = "Name";
+                DropDownList2.DataBind();
+            }
+            DropDownList1.Items.FindByText("Soups").Selected = true;
+            DropDownList2.Items.FindByText("Soups").Selected = true;
         }
-
         protected void Button7_Click(object sender, EventArgs e)
         {
 

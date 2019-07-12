@@ -83,7 +83,7 @@ namespace FoodOrder
 
         protected void ShowInfoButton_Click(object sender, EventArgs e)
         {
-            if (ListBox1.SelectedIndex != -1)
+            if (ListBox1.SelectedItem != null)
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -99,7 +99,7 @@ namespace FoodOrder
 
         protected void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (ListBox1.SelectedIndex != -1 && usernameLabel.Text != ListBox1.SelectedItem.Text)
+            if (ListBox1.SelectedItem != null && usernameLabel.Text != ListBox1.SelectedItem.Text)
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -135,7 +135,7 @@ namespace FoodOrder
 
         protected void DeleteCityButton_Click(object sender, EventArgs e)
         {
-            if (CityList.SelectedIndex != -1)
+            if (CityList.SelectedItem != null)
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -190,7 +190,7 @@ namespace FoodOrder
         }
         protected void DeleteDistrictButton_Click(object sender, EventArgs e)
         {
-            if (CityList.SelectedIndex != -1)
+            if (DistrictList.SelectedItem != null)
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -210,7 +210,7 @@ namespace FoodOrder
 
         protected void MakeAdminButton_Click(object sender, EventArgs e)
         {
-            if (ListBox1.SelectedIndex != -1)
+            if (ListBox1.SelectedItem != null)
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -224,7 +224,7 @@ namespace FoodOrder
 
         protected void RemoveAdminButton_Click(object sender, EventArgs e)
         {
-            if (ListBox1.SelectedIndex != -1)
+            if (ListBox1.SelectedItem != null)
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {

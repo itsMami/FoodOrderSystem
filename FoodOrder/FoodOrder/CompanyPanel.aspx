@@ -52,18 +52,13 @@
                     <asp:Label ID="Label5" runat="server" Text="List: "></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" Height="16px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="124px">
-                        <asp:ListItem>Soup</asp:ListItem>
-                        <asp:ListItem>Main Food</asp:ListItem>
-                        <asp:ListItem>Meat</asp:ListItem>
-                        <asp:ListItem>Salad</asp:ListItem>
-                        <asp:ListItem>Dessert</asp:ListItem>
-                        <asp:ListItem>Drink</asp:ListItem>
                     </asp:DropDownList>
                     <br />
                     <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True" Height="111px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="283px"></asp:ListBox>
 &nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Delete" Width="116px" />
                     <br />
+                    <asp:Label ID="Label7" runat="server" ForeColor="Red" Text="Please Select an Item and Enter a Value!" Visible="False"></asp:Label>
                     <br />
                     <asp:Label ID="Label3" runat="server" Text="Type/Food Name:"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -82,12 +77,6 @@
                     <asp:Label ID="Label6" runat="server" Text="Type: "></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" Height="16px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="149px">
-                        <asp:ListItem>Soup</asp:ListItem>
-                        <asp:ListItem>Main Food</asp:ListItem>
-                        <asp:ListItem>Meat</asp:ListItem>
-                        <asp:ListItem>Salad</asp:ListItem>
-                        <asp:ListItem>Dessert</asp:ListItem>
-                        <asp:ListItem>Drink</asp:ListItem>
                     </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Update Type" Width="118px" />
