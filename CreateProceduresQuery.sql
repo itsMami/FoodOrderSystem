@@ -251,3 +251,29 @@ AS BEGIN
 SELECT * FROM FoodCategories ORDER BY Name DESC
 END
 GO
+
+CREATE PROCEDURE ShowCompanyOnDistrict @DistrictID INT
+AS BEGIN
+SELECT * FROM Companies WHERE Companies.CompanyDistrict = @DistrictID
+END
+GO
+
+CREATE PROCEDURE GetCompanyPoint @CompanyID INT
+AS BEGIN 
+SELECT CompanyPoint FROM Companies WHERE Companies.ID = @CompanyID
+END
+GO
+
+CREATE PROCEDURE IncreaseReview @ID INT
+AS BEGIN
+UPDATE Companies SET CompanyReviewCount = CompanyReviewCount+1
+WHERE ID = @ID
+END
+GO
+
+CREATE PROCEDURE SetCompanyPoint @ID INT, @Point FLOAT
+AS BEGIN 
+UPDATE Companies SET CompanyPoint = ((CompanyPoint+@Point)/CompanyReviewCount)
+WHERE ID=@ID
+END
+GO

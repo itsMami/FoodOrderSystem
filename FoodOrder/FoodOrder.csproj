@@ -196,6 +196,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="FoodOrder\CompanyPanel.aspx" />
     <Content Include="FoodOrder\Home.aspx" />
+    <Content Include="FoodOrder\UserPanel.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -349,6 +350,13 @@
     </Compile>
     <Compile Include="FoodOrder\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="FoodOrder\UserPanel.aspx.cs">
+      <DependentUpon>UserPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FoodOrder\UserPanel.aspx.designer.cs">
+      <DependentUpon>UserPanel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

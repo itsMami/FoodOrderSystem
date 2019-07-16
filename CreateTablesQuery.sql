@@ -46,7 +46,8 @@ CREATE TABLE Companies
 	CompanyWorkHoursEnd INT NOT NULL,
 	CompanyServiceTime INT NOT NULL,
 	CompanyMinimumPrice INT NOT NULL,
-	CompanyPoint FLOAT
+	CompanyPoint FLOAT DEFAULT 0,
+	CompanyReviewCount INT DEFAULT 0
 )
 GO
 CREATE TABLE CompanyFoods

@@ -85,6 +85,8 @@
 
 <asp:Content ID="Content3" runat="server" contentplaceholderid="ContentPlaceHolder2">
     <asp:MultiView ID="MultiView2" runat="server">
+        <asp:View ID="emptyView" runat="server">
+        </asp:View>
         <asp:View ID="AdminSignUp" runat="server">
             <asp:Label ID="Label10" runat="server" Text="Username: "></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -133,7 +135,7 @@
             <br />
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="adminJoinUs" runat="server" OnClick="adminJoinUs_Click" Text="Join Us" Width="224px" ValidationGroup="1" />
+            <asp:Button ID="adminJoinUs" runat="server" OnClick="adminJoinUs_Click" Text="Sign Up!" Width="224px" ValidationGroup="1" />
             <br />
             <br />
             <br />
@@ -284,6 +286,50 @@
             <br />
         </asp:View>
         <asp:View ID="UserSignUp" runat="server">
+            <asp:Label ID="Label32" runat="server" Text="Username: "></asp:Label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="usersignupusername" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="usersignupusername" Display="Dynamic" ErrorMessage="Required" ForeColor="Red" ValidationGroup="2"></asp:RequiredFieldValidator>
+            <asp:Label ID="userDublicateLabel" runat="server" ForeColor="Red" Text="This username is taken." Visible="False"></asp:Label>
+            <br />
+            <asp:Label ID="Label33" runat="server" Text="Password: "></asp:Label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="usersignuppassword1" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="usersignuppassword1" Display="Dynamic" ErrorMessage="Required" ForeColor="Red" ValidationGroup="2"></asp:RequiredFieldValidator>
+            <br />
+            <asp:Label ID="Label34" runat="server" Text="Confirm Password: "></asp:Label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="usersignuppassword2" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:CompareValidator ID="CompareValidator5" runat="server" ControlToCompare="usersignuppassword1" ControlToValidate="usersignuppassword2" Display="Dynamic" ErrorMessage="Password's should match!" ForeColor="Red" ValidationGroup="2"></asp:CompareValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="usersignuppassword2" Display="Dynamic" ErrorMessage="Required" ForeColor="Red" ValidationGroup="2"></asp:RequiredFieldValidator>
+            <br />
+            <asp:DropDownList ID="userCityList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="UserCityList_SelectedIndexChanged">
+                <asp:ListItem Value="-1">Select a City</asp:ListItem>
+            </asp:DropDownList>
+            <asp:DropDownList ID="UserDistrictList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="CompanyDistrictList_SelectedIndexChanged">
+                <asp:ListItem Value="-1">Select a District</asp:ListItem>
+            </asp:DropDownList>
+            <br />
+            <asp:Label ID="Label35" runat="server" Text="E-mail: "></asp:Label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="usersignupemail1" runat="server" TextMode="Email"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="usersignupemail1" Display="Dynamic" ErrorMessage="Required" ForeColor="Red" ValidationGroup="2"></asp:RequiredFieldValidator>
+            <br />
+            <asp:Label ID="Label36" runat="server" Text="Confirm E-mail: "></asp:Label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="usersignupemail2" runat="server" TextMode="Email"></asp:TextBox>
+            <asp:CompareValidator ID="CompareValidator6" runat="server" ControlToCompare="usersignupemail1" ControlToValidate="usersignupemail2" Display="Dynamic" ErrorMessage="E-mail's should match!" ForeColor="Red" ValidationGroup="2"></asp:CompareValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="usersignupemail2" Display="Dynamic" ErrorMessage="Required" ForeColor="Red" ValidationGroup="2"></asp:RequiredFieldValidator>
+            <br />
+            <asp:Label ID="Label37" runat="server" Text="Phone Number: "></asp:Label>
+            &nbsp;<asp:TextBox ID="usersignupphone" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="usersignupphone" Display="Dynamic" ErrorMessage="Required" ForeColor="Red" ValidationGroup="2"></asp:RequiredFieldValidator>
+            <br />
+            <asp:Label ID="Label38" runat="server" Text="Enter your phone in +901111111111 format."></asp:Label>
+            <br />
+            <br />
+            <asp:Button ID="UserRegisterButton" runat="server" OnClick="userSignUpClick" Text="Sign Up!" ValidationGroup="2" Width="220px" />
+            <br />
         </asp:View>
     </asp:MultiView>
 </asp:Content>

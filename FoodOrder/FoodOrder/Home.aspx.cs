@@ -69,7 +69,12 @@ namespace FoodOrder.FoodOrder
 
         protected void AdminSignUpButton_Click(object sender, EventArgs e)
         {
-            MultiView2.SetActiveView(AdminSignUp);
+            if (MultiView2.GetActiveView() == AdminSignUp)
+                MultiView2.SetActiveView(emptyView);
+            else
+            {
+                MultiView2.SetActiveView(AdminSignUp);
+            }
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand("EXEC ListAllCities", connection);
@@ -80,26 +85,36 @@ namespace FoodOrder.FoodOrder
                 signupcitylist.DataValueField = "ID";
                 signupcitylist.DataBind();
             }
-
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                signupdistrictlist.Items.Clear();
+                SqlCommand command = new SqlCommand("EXEC ListAllDistrictsWithCity " + signupcitylist.SelectedItem.Value, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                signupdistrictlist.DataSource = reader;
+                signupdistrictlist.DataTextField = "Name";
+                signupdistrictlist.DataValueField = "ID";
+                signupdistrictlist.DataBind();
+            }
 
         }
 
         protected void AdminButton_Click(object sender, EventArgs e)
         {
             MultiView1.SetActiveView(AdminView);
-            MultiView2.ActiveViewIndex = -1;
+            MultiView2.SetActiveView(emptyView);
         }
 
         protected void CompanyButton_Click(object sender, EventArgs e)
         {
             MultiView1.SetActiveView(CompanyView);
-            MultiView2.ActiveViewIndex = -1;
+            MultiView2.SetActiveView(emptyView);
         }
 
         protected void UserButton_Click(object sender, EventArgs e)
         {
             MultiView1.SetActiveView(UserView);
-            MultiView2.ActiveViewIndex = -1;
+            MultiView2.SetActiveView(emptyView);
         }
         protected void CompanyLoginButton_Click(object sender, EventArgs e)
         {
@@ -130,7 +145,12 @@ namespace FoodOrder.FoodOrder
         }
         protected void CompanySignUpButton_Click(object sender, EventArgs e)
         {
-            MultiView2.SetActiveView(CompanySignUp);
+            if (MultiView2.GetActiveView() == CompanySignUp)
+                MultiView2.SetActiveView(emptyView);
+            else
+            {
+                MultiView2.SetActiveView(CompanySignUp);
+            } 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand("EXEC ListAllCities", connection);
@@ -141,17 +161,78 @@ namespace FoodOrder.FoodOrder
                 companyCityList.DataValueField = "ID";
                 companyCityList.DataBind();
             }
-
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                CompanyDistrictList.Items.Clear();
+                SqlCommand command = new SqlCommand("EXEC ListAllDistrictsWithCity " + companyCityList.SelectedItem.Value, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                CompanyDistrictList.DataSource = reader;
+                CompanyDistrictList.DataTextField = "Name";
+                CompanyDistrictList.DataValueField = "ID";
+                CompanyDistrictList.DataBind();
+            }
         }
 
         protected void UserLoginButton_Click(object sender, EventArgs e)
         {
-
+            Label9.Visible = false;
+            if (UserLoginTextBox.Text != "" && UserPasswordTextBox.Text != "")
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC checkLogin '" + UserLoginTextBox.Text +
+                        "'," + UserPasswordTextBox.Text + "," + 3, connection);
+                    connection.Open();
+                    if (command.ExecuteScalar() != null)
+                    {
+                        Page.Response.Redirect("UserPanel.aspx?username=" + UserLoginTextBox.Text);
+                    }
+                    else
+                    {
+                        Label9.Visible = true;
+                        Label9.Text = "You Entered a Wrong Username or Password!";
+                    }
+                }
+            }
+            else
+            {
+                Label9.Visible = true;
+                Label9.Text = "Fill the required areas";
+            }
         }
 
         protected void UserSignUpButton_Click(object sender, EventArgs e)
         {
-            MultiView2.SetActiveView(UserSignUp);
+            if (MultiView2.GetActiveView() == UserSignUp)
+                MultiView2.SetActiveView(emptyView);
+            else
+            {
+                MultiView2.SetActiveView(UserSignUp);
+            } 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC ListAllCities", connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                userCityList.DataSource = reader;
+                userCityList.DataTextField = "Name";
+                userCityList.DataValueField = "ID";
+                userCityList.DataBind();
+            }
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                UserDistrictList.Items.Clear();
+                SqlCommand command = new SqlCommand("EXEC ListAllDistrictsWithCity " + userCityList.SelectedItem.Value, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                UserDistrictList.DataSource = reader;
+                UserDistrictList.DataTextField = "Name";
+                UserDistrictList.DataValueField = "ID";
+                UserDistrictList.DataBind();
+            }
+           
         }
 
         protected void adminJoinUs_Click(object sender, EventArgs e)
@@ -266,6 +347,8 @@ namespace FoodOrder.FoodOrder
                 CompanyDistrictList.DataValueField = "ID";
                 CompanyDistrictList.DataBind();
             }
+
+
             companysignuppassword1.Attributes.Add("value", password);
             companysignuppassword2.Attributes.Add("value", password);
         }
@@ -279,8 +362,59 @@ namespace FoodOrder.FoodOrder
 
         protected void CompanyDistrictList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            companysignuppassword1.Attributes.Add("value", password);
-            companysignuppassword2.Attributes.Add("value", password);
+            
+        }
+
+        protected void userSignUpClick(object sender, EventArgs e)
+        {
+            if (userCityList.SelectedValue != "-1" && UserDistrictList.SelectedValue != "-1")
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    
+                    SqlCommand command = new SqlCommand("EXEC CheckUsername '" + usersignupusername.Text + "'", connection);
+                    connection.Open();
+                    if (command.ExecuteScalar() == null)
+                    {
+                        userDublicateLabel.Visible = false;
+
+                        SqlCommand command2 = new SqlCommand("EXEC InsertUser '" + usersignupusername.Text + "','" + usersignuppassword1.Text + "',"
+                            + userCityList.SelectedItem.Value + "," + UserDistrictList.SelectedItem.Value + ",'" + usersignupemail1.Text + "','" +
+                        usersignupphone.Text + "'," + 3 + "," + 0, connection);
+                        command2.ExecuteReader();
+
+                        Admindublicatelabel.Visible = false;
+                        adminsignupusername.Text = "";
+                        adminsignuppassword1.Text = "";
+                        adminsignuppassword2.Text = "";
+                        adminemailtextbox1.Text = "";
+                        adminemailtextbox2.Text = "";
+                        adminphonetextbox.Text = "";
+                        signupcitylist.SelectedIndex = -1;
+                        signupdistrictlist.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        userDublicateLabel.Visible = true;
+                    }
+                }
+            }
+        }
+
+        protected void UserCityList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                UserDistrictList.Items.Clear();
+                SqlCommand command = new SqlCommand("EXEC ListAllDistrictsWithCity " + userCityList.SelectedItem.Value, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                UserDistrictList.DataSource = reader;
+                UserDistrictList.DataTextField = "Name";
+                UserDistrictList.DataValueField = "ID";
+                UserDistrictList.DataBind();
+            }
+           
         }
 
         
