@@ -104,20 +104,118 @@
                 <td style="text-align: left; vertical-align: top">&nbsp;
                     <br />
                     <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label8" runat="server" style="font-weight: 700" Text="Work Hours"></asp:Label>
+&nbsp;
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label9" runat="server" Text="0"></asp:Label>
+&nbsp;<asp:Label ID="Label10" runat="server" Text="-"></asp:Label>
+&nbsp;<asp:Label ID="Label11" runat="server" Text="0"></asp:Label>
+                    <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label12" runat="server" style="font-weight: 700" Text="Service Time"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label13" runat="server" Text="0"></asp:Label>
+                    <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label14" runat="server" style="font-weight: 700" Text="Minimum Price"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label15" runat="server" Text="0"></asp:Label>
                     <br />
                     <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <br />
                     <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True">
+                        <asp:ListItem>0</asp:ListItem>
+                        <asp:ListItem>1</asp:ListItem>
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>3</asp:ListItem>
+                        <asp:ListItem>4</asp:ListItem>
+                        <asp:ListItem>5</asp:ListItem>
+                        <asp:ListItem>6</asp:ListItem>
+                        <asp:ListItem>7</asp:ListItem>
+                        <asp:ListItem>8</asp:ListItem>
+                        <asp:ListItem>9</asp:ListItem>
+                        <asp:ListItem>10</asp:ListItem>
+                        <asp:ListItem>11</asp:ListItem>
+                        <asp:ListItem>12</asp:ListItem>
+                        <asp:ListItem>13</asp:ListItem>
+                        <asp:ListItem>14</asp:ListItem>
+                        <asp:ListItem>15</asp:ListItem>
+                        <asp:ListItem>16</asp:ListItem>
+                        <asp:ListItem>17</asp:ListItem>
+                        <asp:ListItem>18</asp:ListItem>
+                        <asp:ListItem>19</asp:ListItem>
+                        <asp:ListItem>20</asp:ListItem>
+                        <asp:ListItem>21</asp:ListItem>
+                        <asp:ListItem>22</asp:ListItem>
+                        <asp:ListItem>23</asp:ListItem>
+                    </asp:DropDownList>
+&nbsp;&nbsp;
+                    <asp:Label ID="Label16" runat="server" Text="-"></asp:Label>
+&nbsp;&nbsp;
+                    <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True">
+                        <asp:ListItem>0</asp:ListItem>
+                        <asp:ListItem>1</asp:ListItem>
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>3</asp:ListItem>
+                        <asp:ListItem>4</asp:ListItem>
+                        <asp:ListItem>5</asp:ListItem>
+                        <asp:ListItem>6</asp:ListItem>
+                        <asp:ListItem>7</asp:ListItem>
+                        <asp:ListItem>8</asp:ListItem>
+                        <asp:ListItem>9</asp:ListItem>
+                        <asp:ListItem>10</asp:ListItem>
+                        <asp:ListItem>11</asp:ListItem>
+                        <asp:ListItem>12</asp:ListItem>
+                        <asp:ListItem>13</asp:ListItem>
+                        <asp:ListItem>14</asp:ListItem>
+                        <asp:ListItem>15</asp:ListItem>
+                        <asp:ListItem>16</asp:ListItem>
+                        <asp:ListItem>17</asp:ListItem>
+                        <asp:ListItem>18</asp:ListItem>
+                        <asp:ListItem>19</asp:ListItem>
+                        <asp:ListItem>20</asp:ListItem>
+                        <asp:ListItem>21</asp:ListItem>
+                        <asp:ListItem>22</asp:ListItem>
+                        <asp:ListItem>23</asp:ListItem>
+                    </asp:DropDownList>
+                    <br />
+                    <br />
+                    <asp:Button ID="Button7" runat="server" OnClick="Button7_Click1" Text="Update Work Hours" Width="124px" />
                     <br />
                     <br />
                     <br />
                     <br />
                     <br />
+                    <asp:DropDownList ID="DropDownList5" runat="server" AutoPostBack="True">
+                        <asp:ListItem>15</asp:ListItem>
+                        <asp:ListItem>30</asp:ListItem>
+                        <asp:ListItem>45</asp:ListItem>
+                        <asp:ListItem>60</asp:ListItem>
+                        <asp:ListItem>75</asp:ListItem>
+                        <asp:ListItem>90</asp:ListItem>
+                    </asp:DropDownList>
                     <br />
                     <br />
+                    <asp:Button ID="Button8" runat="server" OnClick="Button8_Click" Text="Update Service Time" Width="132px" />
+                    <br />
+                    <br />
+                    <br />
+                    <asp:DropDownList ID="DropDownList6" runat="server" AutoPostBack="True">
+                        <asp:ListItem>0</asp:ListItem>
+                        <asp:ListItem>10</asp:ListItem>
+                        <asp:ListItem>20</asp:ListItem>
+                        <asp:ListItem Value="30"></asp:ListItem>
+                        <asp:ListItem>40</asp:ListItem>
+                        <asp:ListItem>50</asp:ListItem>
+                    </asp:DropDownList>
+                    <br />
+                    <br />
+                    <asp:Button ID="Button9" runat="server" OnClick="Button9_Click" Text="Update Minimum Price" Width="137px" />
                 </td>
             </tr>
         </table>

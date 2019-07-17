@@ -91,8 +91,12 @@
         <asp:Button ID="AddDistrictButton" runat="server" Text="Add" Width="53px" OnClick="AddDistrictButton_Click" />
     </p>
     <p>
+        <asp:ListBox ID="ListBox2" runat="server" Height="100px" Width="180px"></asp:ListBox>
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Delete" />
     </p>
     <p>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Add" />
     </p>
     <p>
     </p>

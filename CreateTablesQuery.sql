@@ -46,7 +46,8 @@ CREATE TABLE Companies
 	CompanyWorkHoursEnd INT NOT NULL,
 	CompanyServiceTime INT NOT NULL,
 	CompanyMinimumPrice INT NOT NULL,
-	CompanyPoint FLOAT DEFAULT 0,
+	CompanyTotalPoint DECIMAL(10,1) DEFAULT 0,
+	CompanyPoint DECIMAL(3,1) DEFAULT 0,
 	CompanyReviewCount INT DEFAULT 0
 )
 GO
@@ -63,6 +64,6 @@ GO
 CREATE TABLE FoodCategories
 (
 	ID INT IDENTITY PRIMARY KEY,
-	Name VARCHAR(20) UNIQUE
+	Name VARCHAR(20)
 )
 GO

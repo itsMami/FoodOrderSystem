@@ -277,3 +277,62 @@ UPDATE Companies SET CompanyPoint = ((CompanyPoint+@Point)/CompanyReviewCount)
 WHERE ID=@ID
 END
 GO
+
+
+CREATE PROCEDURE GetStartHour @ID INT
+AS BEGIN
+SELECT Companies.CompanyWorkHoursStart FROM Companies WHERE ID = @ID
+END
+GO
+
+
+CREATE PROCEDURE GetEndHour @ID INT
+AS BEGIN
+SELECT Companies.CompanyWorkHoursEnd FROM Companies WHERE ID = @ID
+END
+GO
+
+CREATE PROCEDURE GetServiceTime @ID INT
+AS BEGIN
+SELECT Companies.CompanyServiceTime FROM Companies WHERE ID = @ID
+END
+GO
+
+CREATE PROCEDURE GetMinimumPrice @ID INT
+AS BEGIN
+SELECT Companies.CompanyMinimumPrice FROM Companies WHERE ID = @ID
+END
+GO
+
+CREATE PROCEDURE UpdateWorkHours @ID INT,@Start INT,@End INT
+AS BEGIN
+UPDATE Companies SET CompanyWorkHoursStart = @Start , CompanyWorkHoursEnd = @End
+WHERE ID = @ID
+END
+GO
+
+CREATE PROCEDURE UpdateServiceTime @ID INT,@NewTime INT
+AS BEGIN
+UPDATE Companies SET CompanyServiceTime = @NewTime
+WHERE ID = @ID
+END
+GO
+
+CREATE PROCEDURE UpdateMinimumPrice @ID INT,@NewPrice INT
+AS BEGIN
+UPDATE Companies SET CompanyMinimumPrice = @NewPrice
+WHERE ID = @ID
+END
+GO
+
+CREATE PROCEDURE InsertFoodCategory @Name VARCHAR(30)
+AS BEGIN
+INSERT INTO FoodCategories(Name) VALUES(@Name)
+END
+GO
+
+CREATE PROCEDURE DeleteFoodCategory @ID INT
+AS BEGIN
+DELETE FROM FoodCategories WHERE ID = @ID
+END
+GO

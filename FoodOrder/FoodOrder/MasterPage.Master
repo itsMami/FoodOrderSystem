@@ -15,52 +15,79 @@
             background-color: #999999;
         }
         .auto-style2 {
-            width: 165px;
+            width: 220px;
             height: 0px;
         }
         .auto-style3 {
-            width: 165px;
-            height: 645px;
+            width: 220px;
+            height: 500px;
         }
         .auto-style4 {
-            height: 645px;
+            height: 500px;
         }
         .auto-style5 {
-            height: 645px;
-            width: 292px;
+            height: 500px;
+            width: 362px;
         }
         .auto-style6 {
-            width: 292px;
+            width: 362px;
+        }
+        .auto-style7 {
+            width: 220px;
+            height: 27px;
+        }
+        .auto-style8 {
+            height: 27px;
+            width: 362px;
+        }
+        .auto-style9 {
+            height: 27px;
+        }
+        .auto-style10 {
+            margin-left: 0px;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <table class="auto-style1">
+        <table class="auto-style1" style="text-align: center; vertical-align: top">
             <tr>
-                <td class="auto-style3" style="background-color: #444444; text-align: center; vertical-align: top;">
-                    <br />
-                    <br />
-                    <br />
-                    <asp:Button ID="Button1" runat="server" BackColor="#444444" BorderColor="#3E3E3E" BorderStyle="Dotted" BorderWidth="1px" CssClass="aatestbutton" Height="60px" OnClick="Button1_Click" Text="Home" Width="158px" />
-                    <br />
+                <td class="auto-style7" style="background-color: #444444; text-align: center; vertical-align: top;" aria-multiline="False">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                    </asp:ContentPlaceHolder>
                     </td>
-                <td class="auto-style5">
+                <td class="auto-style8" style="text-align: center; vertical-align: top">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+                <td class="auto-style9" style="text-align: center; vertical-align: top">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder6" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style3" style="background-color: #444444; text-align: center; vertical-align: top;" aria-multiline="False">
+                    <asp:Button ID="Button1" runat="server" BackColor="#999999" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Height="36px" OnClick="Button1_Click" Text="Home" Width="212px" Font-Size="13pt" CssClass="auto-style10" ForeColor="White" />
+                    <br />
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                    </asp:ContentPlaceHolder>
+                    </td>
+                <td class="auto-style5" style="text-align: center; vertical-align: top">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
           
         </asp:ContentPlaceHolder>
                 </td>
-                <td class="auto-style4">
+                <td class="auto-style4" style="text-align: center; vertical-align: top">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                     </asp:ContentPlaceHolder>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2" style="background-color: #444444; text-align: center; vertical-align: top;">&nbsp;</td>
-                <td class="auto-style6">
+                <td class="auto-style2" style="background-color: #444444; text-align: center; vertical-align: top;" aria-multiline="False">&nbsp;</td>
+                <td class="auto-style6" style="text-align: center; vertical-align: top">
                     </td>
-                <td>
+                <td style="text-align: center; vertical-align: top">
                     &nbsp;</td>
             </tr>
         </table>

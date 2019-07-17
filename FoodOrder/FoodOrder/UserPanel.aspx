@@ -46,7 +46,15 @@
                     <asp:Label ID="Label24" runat="server" style="font-weight: 700" Text="Point: "></asp:Label>
                     <asp:Label ID="Label25" runat="server" Text="0"></asp:Label>
 &nbsp;&nbsp;
-                    <asp:Label ID="Label28" runat="server" Text="Service Hours: "></asp:Label>
+                    <asp:Label ID="Label28" runat="server" Text="Service Hours: " style="font-weight: 700"></asp:Label>
+                    <asp:Label ID="Label29" runat="server" Text="0"></asp:Label>
+&nbsp;<asp:Label ID="Label30" runat="server" Text="-"></asp:Label>
+&nbsp;<asp:Label ID="Label31" runat="server" Text="0"></asp:Label>
+&nbsp;<asp:Label ID="Label32" runat="server" style="font-weight: 700" Text="Minimum Price: "></asp:Label>
+                    <asp:Label ID="Label33" runat="server" Text="0"></asp:Label>
+&nbsp;
+                    <asp:Label ID="Label34" runat="server" style="font-weight: 700" Text="Service Time: "></asp:Label>
+                    <asp:Label ID="Label35" runat="server" Text="0"></asp:Label>
                     <br />
                     <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
-//SetCompanyPoint Hatalı,Service hours,service time,minimum price
+//SetCompanyPoint Hatalı
 namespace FoodOrder.FoodOrder
 {
     public partial class UserPanel : System.Web.UI.Page
@@ -162,6 +162,34 @@ namespace FoodOrder.FoodOrder
                 DessertList.DataTextField = "FoodName";
                 DessertList.DataValueField = "ID";
                 DessertList.DataBind();
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetStartHour " + CompanyList.SelectedItem.Value, connection);
+                connection.Open();
+                if(command.ExecuteScalar() != null)
+                    Label29.Text = command.ExecuteScalar().ToString();
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetEndHour " + CompanyList.SelectedItem.Value, connection);
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    Label31.Text = command.ExecuteScalar().ToString();
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetMinimumPrice " + CompanyList.SelectedItem.Value, connection);
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    Label33.Text = command.ExecuteScalar().ToString();
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetServiceTime " + CompanyList.SelectedItem.Value, connection);
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    Label35.Text = command.ExecuteScalar().ToString();
             }
         }
 
@@ -326,15 +354,20 @@ namespace FoodOrder.FoodOrder
 
         protected void Button9_Click(object sender, EventArgs e)
         {
-            if (BasketList.Items.Count > 0)
+            if (BasketList.Items.Count > 0 && Convert.ToInt32(Label23.Text) > Convert.ToInt32(Label33.Text))
             {
                 BasketList.Items.Clear();
                 totalPrice = 0;
                 Label23.Text = totalPrice.ToString();
+                Label26.Text = "Purchase was Successful!";
                 Label26.Visible = true;
-                Label27.Visible = true;
                 Button10.Visible = true;
-            
+
+            }
+            else
+            {
+                Label26.Visible = true;
+                Label26.Text = "Please add more items to the basket!";
             }
         }
 

@@ -198,6 +198,7 @@
     <Content Include="FoodOrder\Home.aspx" />
     <Content Include="FoodOrder\UserPanel.aspx" />
     <Content Include="Images\accent.png" />
+    <Content Include="Images\marka.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\orderedList0.png" />

@@ -24,8 +24,8 @@ namespace FoodOrder.FoodOrder
             {
                 GetCategories();
                 GetMenu();
-               
             }
+            GetDetails();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -195,6 +195,111 @@ namespace FoodOrder.FoodOrder
 
         }
 
-       
+        private void GetDetails()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetStartHour " + companyID, connection);
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    Label9.Text = command.ExecuteScalar().ToString();
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetEndHour " + companyID, connection);
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    Label11.Text = command.ExecuteScalar().ToString();
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetMinimumPrice " + companyID, connection);
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    Label15.Text = command.ExecuteScalar().ToString();
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetServiceTime " + companyID, connection);
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    Label13.Text = command.ExecuteScalar().ToString();
+            }
+
+
+        }
+
+        protected void Button7_Click1(object sender, EventArgs e)
+        {
+            GetCompanyID();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC UpdateWorkHours " + companyID + "," + Convert.ToInt32( DropDownList3.SelectedItem.Value) + "," + Convert.ToInt32(DropDownList4.SelectedItem.Value), connection);
+                connection.Open();
+                command.ExecuteReader();
+            }
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetStartHour " + companyID, connection);
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    Label9.Text = command.ExecuteScalar().ToString();
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetEndHour " + companyID, connection);
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    Label11.Text = command.ExecuteScalar().ToString();
+            }
+        }
+
+        protected void Button8_Click(object sender, EventArgs e)
+        {
+            GetCompanyID();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC UpdateServiceTime " + companyID + "," + Convert.ToInt32(DropDownList5.SelectedItem.Value), connection);
+                connection.Open();
+                command.ExecuteReader();
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetServiceTime " + companyID, connection);
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    Label13.Text = command.ExecuteScalar().ToString();
+            }
+        }
+
+        protected void Button9_Click(object sender, EventArgs e)
+        {
+            GetCompanyID();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC UpdateMinimumPrice " + companyID + "," + Convert.ToInt32(DropDownList6.SelectedItem.Value), connection);
+                connection.Open();
+                command.ExecuteReader();
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetMinimumPrice " + companyID, connection);
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    Label15.Text = command.ExecuteScalar().ToString();
+            }
+        }
+
+        private void GetCompanyID() 
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("EXEC GetCompanyIDFromUserName '" + CompanyNameLabel.Text + "'", connection);
+                connection.Open();
+                companyID = ((int)command.ExecuteScalar());
+            }
+        
+        }
     }
 }

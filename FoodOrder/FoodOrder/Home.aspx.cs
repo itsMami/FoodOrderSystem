@@ -19,6 +19,7 @@ namespace FoodOrder.FoodOrder
         static string password;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (password != null)
             {
                 companysignuppassword1.Attributes.Add("value", password);
@@ -96,7 +97,12 @@ namespace FoodOrder.FoodOrder
                 signupdistrictlist.DataValueField = "ID";
                 signupdistrictlist.DataBind();
             }
-
+            if (MultiView2.ActiveViewIndex != 0)
+                Label39.Text = "𝕊𝕀𝔾ℕ 𝕌ℙ";
+            else
+            {
+                Label39.Text = "𝔸𝔹𝕆𝕌𝕋 𝕌𝕊";
+            }
         }
 
         protected void AdminButton_Click(object sender, EventArgs e)
@@ -172,6 +178,12 @@ namespace FoodOrder.FoodOrder
                 CompanyDistrictList.DataValueField = "ID";
                 CompanyDistrictList.DataBind();
             }
+            if (MultiView2.ActiveViewIndex != 0)
+                Label39.Text = "𝕊𝕀𝔾ℕ 𝕌ℙ";
+            else
+            {
+                Label39.Text = "𝔸𝔹𝕆𝕌𝕋 𝕌𝕊";
+            }
         }
 
         protected void UserLoginButton_Click(object sender, EventArgs e)
@@ -232,7 +244,12 @@ namespace FoodOrder.FoodOrder
                 UserDistrictList.DataValueField = "ID";
                 UserDistrictList.DataBind();
             }
-           
+            if (MultiView2.ActiveViewIndex != 0)
+                Label39.Text = "𝕊𝕀𝔾ℕ 𝕌ℙ";
+            else
+            {
+                Label39.Text = "𝔸𝔹𝕆𝕌𝕋 𝕌𝕊";
+            }
         }
 
         protected void adminJoinUs_Click(object sender, EventArgs e)

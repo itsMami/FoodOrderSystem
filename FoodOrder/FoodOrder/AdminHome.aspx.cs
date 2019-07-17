@@ -8,7 +8,8 @@ using System.Data.SqlClient;
 using System.Configuration;
 
 namespace FoodOrder
-{//gridview css generator
+{//You can add or delete category from admin panel but
+ //the companies need to change their page depending on the categories.
     public partial class AdminHome : System.Web.UI.Page
     {
         static string connectionString = "Data Source=EXPER10;Initial Catalog=FoodOrder;Integrated Security=True;MultipleActiveResultSets=True";
@@ -30,6 +31,27 @@ namespace FoodOrder
                     CityList.DataTextField = "Name";
                     CityList.DataValueField = "ID";
                     CityList.DataBind();
+                }
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    DistrictList.Items.Clear();
+                    SqlCommand command = new SqlCommand("EXEC ListAllDistrictsWithCity " + CityList.SelectedItem.Value, connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    DistrictList.DataSource = reader;
+                    DistrictList.DataTextField = "Name";
+                    DistrictList.DataValueField = "ID";
+                    DistrictList.DataBind();
+                }
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC GetCategories", connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    ListBox2.DataSource = reader;
+                    ListBox2.DataTextField = "Name";
+                    ListBox2.DataValueField = "ID";
+                    ListBox2.DataBind();
                 }
             }
            
@@ -233,6 +255,53 @@ namespace FoodOrder
                     SqlDataReader reader = command.ExecuteReader();
                 }
 
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (ListBox2.SelectedItem != null)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC DeleteFoodCategory " + ListBox2.SelectedItem.Value, connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                }
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC GetCategories", connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    ListBox2.DataSource = reader;
+                    ListBox2.DataTextField = "Name";
+                    ListBox2.DataValueField = "ID";
+                    ListBox2.DataBind();
+                }
+            }
+                
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(TextBox1.Text))
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC InsertFoodCategory " + TextBox1.Text, connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                }
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("EXEC GetCategories", connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    ListBox2.DataSource = reader;
+                    ListBox2.DataTextField = "Name";
+                    ListBox2.DataValueField = "ID";
+                    ListBox2.DataBind();
+                }
             }
         }
 
