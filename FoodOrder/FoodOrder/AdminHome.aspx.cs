@@ -56,8 +56,7 @@ namespace FoodOrder
             }
            
 
-
-        }
+                    }
 
         protected void ListAdminButton_Click(object sender, EventArgs e)
         {
@@ -303,6 +302,11 @@ namespace FoodOrder
                     ListBox2.DataBind();
                 }
             }
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
      

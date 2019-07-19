@@ -14,9 +14,30 @@
         }
         .auto-style2 {
             width: 160px;
+            background-color: #CC0000;
         }
         .auto-style3 {
-            width: 321px;
+            width: 707px;
+            background-color: #CCCCCC;
+        }
+        .auto-style4 {
+            width: 160px;
+            height: 83px;
+            background-color: #CC0000;
+        }
+        .auto-style5 {
+            width: 707px;
+            height: 83px;
+            background-color: #CC0000;
+        }
+        .auto-style6 {
+            height: 83px;
+            width: 59px;
+            background-color: #CCCCCC;
+        }
+        .auto-style7 {
+            width: 59px;
+            background-color: #CCCCCC;
         }
     </style>
 </head>
@@ -25,9 +46,29 @@
     <div>
         <table class="auto-style1">
             <tr>
-                <td class="auto-style2" style="text-align: center; vertical-align: top; background-color: #FFFFCC;">
+                <td class="auto-style4" style="text-align: center; vertical-align: top; ">
+                  
+                    <a href="Home.aspx">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
+                    </asp:ContentPlaceHolder>
+                    </a></td>
+                <td style="text-align: left; vertical-align: top;" class="auto-style5">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder6" runat="server">
+                        <p>
+                            &nbsp;</p>
+                    </asp:ContentPlaceHolder>
+                </td>
+                <td class="auto-style6">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder7" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2" style="text-align: center; vertical-align: top; ">
                     <br />
-                    <asp:Label ID="InformationLabel" runat="server" Text="You have logged in as"></asp:Label>
+                    <br />
+                    <br />
+                    <asp:Label ID="InformationLabel" runat="server" Text="You have logged in as" ForeColor="White"></asp:Label>
                     <br />
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                     </asp:ContentPlaceHolder>
@@ -35,12 +76,15 @@
                     <br />
                   
                     <a href="Home.aspx">LogOut</a></td>
-                <td style="background-color: #FFFF99" class="auto-style3">
+                <td style="text-align: left; vertical-align: top;" class="auto-style3">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+            <p style="text-align: left; vertical-align: top">
+            </p>
         
         </asp:ContentPlaceHolder>
                 </td>
-                <td style="background-color: #FFFF99">
+                <td class="auto-style7">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
                         </asp:ContentPlaceHolder>
