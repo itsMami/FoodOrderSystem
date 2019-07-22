@@ -83,10 +83,10 @@ WHERE Users.ID = @ID
 END
 GO
 
-CREATE PROCEDURE checkLogin @Username VARCHAR(100),@UserPassword VARCHAR(18)
+CREATE PROCEDURE checkLogin @Username VARCHAR(100),@UserPassword VARCHAR(18),@Privilege INT
 AS
 BEGIN
-SELECT 1 FROM Users WHERE Users.UserName = @Username AND Users.UserPassword = @UserPassword
+SELECT 1 FROM Users WHERE Users.UserName = @Username AND Users.UserPassword = @UserPassword AND Users.PrivilegeID = @Privilege
 END
 GO
 

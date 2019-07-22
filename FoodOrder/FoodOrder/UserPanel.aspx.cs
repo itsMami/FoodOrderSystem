@@ -12,7 +12,7 @@ namespace FoodOrder.FoodOrder
     {
         int totalPrice;
         static string connectionString = "Data Source=EXPER10;Initial Catalog=FoodOrder;Integrated Security=True;MultipleActiveResultSets=True";
-        protected void Page_Load(object sender, EventArgs e)
+		protected void Page_Load(object sender, EventArgs e)
         {
             totalPrice = Convert.ToInt32(Label23.Text);
             if (Page.Request.QueryString["username"] != null)
@@ -499,5 +499,11 @@ namespace FoodOrder.FoodOrder
                 Label27.Text = "Please choose an option first!";
             }
         }
-    }
+
+		protected void BasketList_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+
+		}
+	}
 }

@@ -1,0 +1,279 @@
+﻿body {
+}
+
+
+
+.LogOutButton {
+    font-size: 15px;
+    border-style: none;
+    color: white;
+    transition: all .5s ease;
+}
+
+    .LogOutButton:hover {
+        border-color: white;
+        color: black;
+        transform: scale(1.5);
+    }
+
+.homeButton2 {
+    background-color: black;
+    border-radius: 11px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 14px;
+    padding: 11px 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 8px;
+}
+
+.homeButton2:hover {
+    background-color: gray;
+    color: black;
+    box-shadow: 0 0 4px rgb(204, 204, 204)
+}
+
+
+
+
+
+.homeButton {
+    background-color: black;
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+    border-radius: 11px;
+    transition: all .5s ease;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 11px 16px;
+    text-decoration: none;
+    margin-left: 43px;
+    margin-top: 10px;
+}
+
+.homeButton:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 4px rgb(204, 204, 204);
+    
+    
+}
+
+.homeButton:active {
+    position: relative;
+    top: 1px;
+}
+
+
+.homeTextBox {
+    background-color: black;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 14px;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 11px 16px;
+    text-decoration:solid;
+    margin-left: 36px;
+}
+
+    .homeTextBox:hover {
+        background-color: #272121;
+        color: white;
+        box-shadow: 0 0 4px white;
+    }
+
+.homeTextBox:focus {
+    background-color : #757575;
+    box-shadow: 0 0 27px white;
+    
+}
+
+.myTextBox {
+    background-color: #fa3c3c;
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+    border-radius: 11px;
+    transition: all .5s ease;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 11px 16px;
+    text-decoration: none;
+}
+
+.myTextBox:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 4px rgb(204, 204, 204)
+}
+
+.myTextBox:active {
+    position: relative;
+    top: 1px;
+}
+
+.myListBox {
+    background-color: #fa3c3c;
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+    border-radius: 11px;
+    transition: all .5s ease;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 11px 16px;
+    text-decoration: none;
+}
+.myListBox:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 4px rgb(204, 204, 204)
+}
+.myListBox:active {
+    position: relative;
+    top: 1px;
+}
+
+.myButton {
+    background-color: #fa3c3c;
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+    border-radius: 11px;
+    transition: all .5s ease;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 11px 16px;
+    text-decoration: none;
+    margin-left: 43px;
+}
+
+    .myButton:hover {
+        background-color: white;
+        color: black;
+        box-shadow: 0 0 4px rgb(204, 204, 204) ;
+    }
+
+.myButton:active {
+        position: relative;
+        top: 1px;
+}
+/*Styling Selectbox*/
+.dropdown {
+    display: inline-block;
+    background-color: #b2b2b2;
+    border-radius: 5px;
+    box-shadow: 0 0 2px rgb(204, 204, 204);
+    transition: all .5s ease;
+    font-size: 14px;
+    color: white;
+    text-align: left;
+    top: -28px;
+    left: 6px;
+}
+
+.dropdown:hover {
+    background-color: #fff;
+    color: black;
+    box-shadow: 0 0 4px rgb(204, 204, 204)
+}
+
+
+.mydatagrid {
+    width: 80%;
+    border: solid 2px black;
+    min-width: 80%;
+}
+
+.header {
+    background-color: #646464;
+    font-family: Arial;
+    color: White;
+    border: none 0px transparent;
+    height: 25px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.rows {
+    background-color: #fff;
+    font-family: Arial;
+    font-size: 14px;
+    color: #000;
+    min-height: 25px;
+    text-align: left;
+    border: none 0px transparent;
+}
+
+    .rows:hover {
+        background-color: #808080;
+        font-family: Arial;
+        color: #fff;
+        text-align: left;
+    }
+
+.selectedrow {
+    background-color: #808080;
+    font-family: Arial;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.mydatagrid a /** FOR THE PAGING ICONS  **/ {
+    background-color: Transparent;
+    padding: 5px 5px 5px 5px;
+    transition: all .5s ease;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .mydatagrid a:hover /** FOR THE PAGING ICONS  HOVER STYLES**/ {
+        background-color: #fa3c3c;
+        color: #fff;
+    }
+
+.mydatagrid span /** FOR THE PAGING ICONS CURRENT PAGE INDICATOR **/ {
+    background-color: #c9c9c9;
+    color: #000;
+    padding: 5px 5px 5px 5px;
+}
+
+.pager {
+    background-color: #646464;
+    font-family: Arial;
+    color: White;
+    height: 30px;
+    text-align: left;
+}
+
+.mydatagrid td {
+    padding: 5px;
+}
+
+.mydatagrid th {
+    padding: 5px;
+}

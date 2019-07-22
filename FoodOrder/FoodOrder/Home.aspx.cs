@@ -8,15 +8,14 @@ using System.Data.SqlClient;
 using System.Configuration;
 
 
-//User signup webform
-//clear fields buggy
+
 
 namespace FoodOrder.FoodOrder
 {
     public partial class Home : System.Web.UI.Page
     {
         static string connectionString = "Data Source=EXPER10;Initial Catalog=FoodOrder;Integrated Security=True;MultipleActiveResultSets=True";
-        static string password;
+		static string password;
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -97,12 +96,7 @@ namespace FoodOrder.FoodOrder
                 signupdistrictlist.DataValueField = "ID";
                 signupdistrictlist.DataBind();
             }
-            if (MultiView2.ActiveViewIndex != 0)
-                Label39.Text = "𝕊𝕀𝔾ℕ 𝕌ℙ";
-            else
-            {
-                Label39.Text = "𝔸𝔹𝕆𝕌𝕋 𝕌𝕊";
-            }
+            
         }
 
         protected void AdminButton_Click(object sender, EventArgs e)
@@ -178,12 +172,7 @@ namespace FoodOrder.FoodOrder
                 CompanyDistrictList.DataValueField = "ID";
                 CompanyDistrictList.DataBind();
             }
-            if (MultiView2.ActiveViewIndex != 0)
-                Label39.Text = "𝕊𝕀𝔾ℕ 𝕌ℙ";
-            else
-            {
-                Label39.Text = "𝔸𝔹𝕆𝕌𝕋 𝕌𝕊";
-            }
+           
         }
 
         protected void UserLoginButton_Click(object sender, EventArgs e)
@@ -244,12 +233,7 @@ namespace FoodOrder.FoodOrder
                 UserDistrictList.DataValueField = "ID";
                 UserDistrictList.DataBind();
             }
-            if (MultiView2.ActiveViewIndex != 0)
-                Label39.Text = "𝕊𝕀𝔾ℕ 𝕌ℙ";
-            else
-            {
-                Label39.Text = "𝔸𝔹𝕆𝕌𝕋 𝕌𝕊";
-            }
+            
         }
 
         protected void adminJoinUs_Click(object sender, EventArgs e)
@@ -270,15 +254,13 @@ namespace FoodOrder.FoodOrder
                         command2.ExecuteReader();
 
                         Admindublicatelabel.Visible = false;
-                        adminsignupusername.Text = "";
-                        adminsignuppassword1.Text = "";
-                        adminsignuppassword2.Text = "";
-                        adminemailtextbox1.Text = "";
-                        adminemailtextbox2.Text = "";
-                        adminphonetextbox.Text = "";
-                        signupcitylist.SelectedIndex = -1;
-                        signupdistrictlist.SelectedIndex = -1;
-                    }
+						Response.Write("<script>alert('Succesfull.');</script>");
+						adminsignupusername.Text = "";
+						adminemailtextbox1.Text = "";
+						adminemailtextbox2.Text = "";
+						adminphonetextbox.Text = "";
+						MultiView2.SetActiveView(emptyView);
+					}
                     else
                     {
                         Admindublicatelabel.Visible = true;
@@ -340,9 +322,16 @@ namespace FoodOrder.FoodOrder
                         SqlCommand command4 = new SqlCommand("EXEC InsertCompany '" + companyinformationname.Text + "'," + userID + ",'" + companysignupemail1.Text + "'," + companysignupphone.Text + "," + CompanyDistrictList.SelectedItem.Value + 
                          "," + Convert.ToInt32(workstartlist.SelectedValue) + "," + Convert.ToInt32(workendlist.SelectedValue) + "," + Convert.ToInt32(companyservicetime.SelectedValue) + "," + Convert.ToInt32(companyminprice.SelectedValue) + "," + 0,connection);
                         command4.ExecuteReader();
+						Admindublicatelabel.Visible = false;
+						Response.Write("<script>alert('Succesfull.');</script>");
+						companysignupusername.Text = "";
+						companysignupemail1.Text = "";
+						companysignupemail2.Text = "";
+						companysignupphone.Text = "";
+						companyinformationname.Text = "";
+						MultiView2.SetActiveView(emptyView);
 
-
-                    }
+					}
                     else
                     {
                         companyDublicateLabel.Visible = true;
@@ -400,16 +389,14 @@ namespace FoodOrder.FoodOrder
                         usersignupphone.Text + "'," + 3 + "," + 0, connection);
                         command2.ExecuteReader();
 
-                        Admindublicatelabel.Visible = false;
-                        adminsignupusername.Text = "";
-                        adminsignuppassword1.Text = "";
-                        adminsignuppassword2.Text = "";
-                        adminemailtextbox1.Text = "";
-                        adminemailtextbox2.Text = "";
-                        adminphonetextbox.Text = "";
-                        signupcitylist.SelectedIndex = -1;
-                        signupdistrictlist.SelectedIndex = -1;
-                    }
+                        userDublicateLabel.Visible = false;
+						Response.Write("<script>alert('Succesfull.');</script>");
+						usersignupusername.Text = "";
+                        usersignupemail1.Text = "";
+                        usersignupemail2.Text = "";
+                        usersignupphone.Text = "";
+						MultiView2.SetActiveView(emptyView);
+					}
                     else
                     {
                         userDublicateLabel.Visible = true;

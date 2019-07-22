@@ -5,9 +5,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="mystyle.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
+        .LogOutButton {
+            font-size:15px;
+            border-style:none;
+            color:white;
+            transition: all .5s ease;
+        }
+        .LogOutButton:hover{
+            border-color:white;
+            color:black;
+            transform:scale(1.5);
+            transform:translate(40px);
+        }
         .auto-style1 {
             width: 100%;
             height: 632px;
@@ -15,10 +28,12 @@
         .auto-style2 {
             width: 160px;
             background-color: #CC0000;
+            height: 545px;
         }
         .auto-style3 {
             width: 707px;
             background-color: #CCCCCC;
+            height: 545px;
         }
         .auto-style4 {
             width: 160px;
@@ -38,6 +53,7 @@
         .auto-style7 {
             width: 59px;
             background-color: #CCCCCC;
+            height: 545px;
         }
     </style>
 </head>
@@ -46,20 +62,22 @@
     <div>
         <table class="auto-style1">
             <tr>
-                <td class="auto-style4" style="text-align: center; vertical-align: top; ">
+                <td class="auto-style4" style="background-color: #CC0000;">
                   
                     <a href="Home.aspx">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
                     </asp:ContentPlaceHolder>
                     </a></td>
-                <td style="text-align: left; vertical-align: top;" class="auto-style5">
+                <td style="background-color: #CC0000;" class="auto-style5">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder6" runat="server">
                         <p>
                             &nbsp;</p>
                     </asp:ContentPlaceHolder>
                 </td>
-                <td class="auto-style6">
+                <td class="auto-style6" style="background-color: #CC0000">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder7" runat="server">
+                        <p style="background-color: #CC0000">
+                        </p>
                     </asp:ContentPlaceHolder>
                 </td>
             </tr>
@@ -75,7 +93,11 @@
                   
                     <br />
                   
-                    <a href="Home.aspx">LogOut</a></td>
+                    <asp:Button ID="Button1" runat="server" Text="Log Out" BackColor="#CC0000" CssClass="LogOutButton" OnClick="Button1_Click" />
+                  
+                    <br />
+                  
+                    </td>
                 <td style="text-align: left; vertical-align: top;" class="auto-style3">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
@@ -84,7 +106,7 @@
         
         </asp:ContentPlaceHolder>
                 </td>
-                <td class="auto-style7">
+                <td class="auto-style7" style="background-color: #FFFFFF">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
                         </asp:ContentPlaceHolder>

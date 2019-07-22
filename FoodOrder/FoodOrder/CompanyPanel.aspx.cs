@@ -13,7 +13,7 @@ namespace FoodOrder.FoodOrder
     public partial class CompanyPanel : System.Web.UI.Page
     {
         static string connectionString = "Data Source=EXPER10;Initial Catalog=FoodOrder;Integrated Security=True;MultipleActiveResultSets=True";
-        int companyID;
+		int companyID;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Page.Request.QueryString["username"] != null)
